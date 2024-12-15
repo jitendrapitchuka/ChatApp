@@ -53,3 +53,30 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     }
 }
 ```
+
+# Chat Controller in Spring Boot
+
+This is the WebSocket controller that handles sending and receiving messages between clients in a chat room. The controller leverages **STOMP** over WebSocket for real-time communication.
+
+```java
+@RestController
+public class ChatController {
+
+    @Autowired
+    private RoomService roomService;
+
+    /**
+     * This method is triggered when a message is sent to the '/app/sendMessage/{roomId}' endpoint.
+     * The message is then broadcast to all subscribed clients at '/topic/room/{roomId}'.
+     * 
+     * @param roomId   The ID of the room where the message will be sent.
+     * @param request  The message content to be sent.
+     * @return         The processed message to be sent to all room subscribers.
+     */
+    @MessageMapping("/sendMessage/{roomId}")  // Maps to /app/sendMessage/{roomId}
+    @SendTo("/topic/room/{roomId}")  // Broadcasts to the topic /topic/room/{roomId}
+    public Message sendMessage(@DestinationVariable String roomId, @RequestBody MessageRequest request) {
+        // Sends the message using the roomService
+        return roomService.sendMessage(roomId, request);
+    }
+}
