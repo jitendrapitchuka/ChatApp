@@ -45,9 +45,11 @@ public class RoomService {
             return null;
 
         List<Message> messages=room.getMessages();
-        int start=Math.min(0, messages.size()-(page+1)*size);
-        int end=Math.max(messages.size(),start+size);
+        int start=Math.max(0, messages.size()-(page+1)*size);
+        int end=Math.min(messages.size(),start+size);
         List<Message>paginatedMessages=messages.subList(start,end);
+
+
 
         return paginatedMessages;
 

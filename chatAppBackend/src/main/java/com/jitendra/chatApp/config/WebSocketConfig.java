@@ -13,7 +13,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/chat")
-                .setAllowedOrigins("http://localhost:3000")
+                .setAllowedOrigins("http://localhost:5173")
                 .withSockJS();
         //This means that clients (usually web browsers or other WebSocket-enabled applications) will be able to connect to this URL endpoint using WebSocket.
         //For example, a client can connect to the server using ws://<server-domain>/chat

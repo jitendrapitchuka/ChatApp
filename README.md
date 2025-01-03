@@ -1,5 +1,10 @@
 ## New Learnings and About the project
 
+### Technologies Used:
+- **Backend**: Spring Boot
+- **Frontend**: React
+- **Database**: Mongo DB
+
 ### 1. **HTTP Protocol**
 - The **HTTP** protocol is a simple request-response communication model between a client and server.
 
@@ -80,3 +85,11 @@ public class ChatController {
         return roomService.sendMessage(roomId, request);
     }
 }
+```
+# Output:
+
+![alt text](img2.png)
+![alt text](img1.png)
+
+
+
